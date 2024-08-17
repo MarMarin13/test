@@ -4,8 +4,10 @@ pipeline {
     }
     stages {
         stage('Build') {
-            docker {
-                image 'node:latest'
+            agent {
+                docker {
+                    image 'node:latest'
+                }
             }
             steps {
                 echo "Building"
