@@ -4,19 +4,10 @@ pipeline {
     }
     stages {
         stage('Build') {
-            agent {
-                dockerContainer {
-                    image 'node:alpine'
-                }
-            }
             steps {
-                echo "Building"
-                sh '''
-                    node --version
-                    python3 test.py
-                '''
+                docker.build(marmarin13/test)
             }
-        } 
+            } 
         stage('Test') {
             steps {
                 echo "Testing"
