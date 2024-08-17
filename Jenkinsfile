@@ -5,14 +5,15 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo "Building"
-                python3 test.py
+                echo "Building".
+                sh '''
+                    python3 test.py
+                '''
             }
         } 
         stage('Test') {
             steps {
                 echo "Testing"
-                ls 
             }
         }
         stage('Deploy') {
