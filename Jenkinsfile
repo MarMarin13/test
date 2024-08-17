@@ -1,5 +1,7 @@
 pipeline {
-    agent 'docker-agent-python'
+    agent {
+        label 'docker-agent-python'
+    }
     stages {
         stage('Build') {
             steps {
