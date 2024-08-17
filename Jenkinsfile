@@ -1,33 +1,36 @@
 pipeline {
-    agent { 
-        node {
-            label 'docker-agent-python'
-      }
-    } 
+    agent 'docker-agent-python'
     stages {
         stage('Build') {
             steps {
-                echo "Building.."
-                sh '''
-                echo "doing build stuff.."
-                '''
+                echo "Building"
+                python3 test.py
             }
         }
         stage('Test') {
             steps {
-                echo "Testing.."
+                echo "Testing"
+                ls
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo "Deploying"
                 sh '''
-                echo "doing test stuff.."
+                    cat test.py
                 '''
             }
         }
-        stage('Deliver') {
-            steps {
-                echo 'Deliver....'
-                sh '''
-                echo "doing delivery stuff.."
-                '''
-            }
+        }
+    post {
+        always {
+            echo "Finished pipeline"
+        }
+        success {
+            echo "The pipeline succeeded"
+        }
+        failure {
+            echo "The pipeline failed"
         }
     }
-}
+    }
