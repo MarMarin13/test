@@ -4,9 +4,13 @@ pipeline {
     }
     stages {
         stage('Build') {
+            docker {
+                image 'node:latest'
+            }
             steps {
                 echo "Building"
                 sh '''
+                    node --version
                     python3 test.py
                 '''
             }
