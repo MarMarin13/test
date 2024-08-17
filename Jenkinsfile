@@ -6,7 +6,7 @@ pipeline {
                 echo "Building"
                 python3 test.py
             }
-        }
+        } 
         stage('Test') {
             steps {
                 echo "Testing"
