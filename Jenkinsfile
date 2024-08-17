@@ -9,8 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    def commitHash = sh(script: 'git rev-parse --short HEAD', returnStdout: true)
-                    docker.build("${DOCKER_IMAGE}:${commitHash}")
+                    docker.build("${DOCKER_IMAGE}:test")
                 }
             }
             } 
