@@ -6,7 +6,7 @@ pipeline {
         stage('Build') {
             agent {
                 dockerContainer {
-                    image 'node:latest'
+                    image 'node:alpine'
                 }
             }
             steps {
