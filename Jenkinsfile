@@ -18,8 +18,8 @@ pipeline {
                         script {
                             def short_sha = GIT_COMMIT.substring(0,10)
                             def docker_image = "${GIT_BRANCH}:${short_sha}"    
+                            hello.call "AAAA"
                         }
-                        hello.call "AAAA"
                     }
                 }
                 stage('Build b') {
