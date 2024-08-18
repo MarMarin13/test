@@ -17,6 +17,7 @@ pipeline {
                             def short_sha = GIT_COMMIT.substring(0,10)
                             echo "a ${DOCKER_REGISTRY} ${short_sha}"    
                         }
+                        echo "$short_sha"
                     }
                 }
                 stage('Build b') {
