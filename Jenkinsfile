@@ -9,11 +9,15 @@ pipeline {
         stage('Build') {
             steps {
                 parallel  {
-                    a: {
-                        echo "a ${DOCKER_REGISTRY}"    
-                    },
-                    b: {
-                        echo "b"
+                    stage('Build a') {
+                        steps {
+                            echo "a ${DOCKER_REGISTRY}"    
+                        }
+                    }
+                    stage('Build b') {
+                        steps {
+                            echo "b"
+                        }
                     }
                 }
             }
