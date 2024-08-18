@@ -13,7 +13,7 @@ pipeline {
                         DOCKER_REGISTRY = 'eeeeeeeeeee'
                     }
                     steps {
-                        echo "a ${DOCKER_REGISTRY}"    
+                        echo "a ${DOCKER_REGISTRY} ${GIT_COMMIT}"    
                     }
                 }
                 stage('Build b') {
