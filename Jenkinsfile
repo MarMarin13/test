@@ -14,7 +14,7 @@ pipeline {
                     }
                     steps {
                         sh '''
-                        short_sha=$(echo ${GIT_COMMIT} | cut -c1-7)
+                        export short_sha=$(echo ${GIT_COMMIT} | cut -c1-7)
                         '''
                         echo "a ${DOCKER_REGISTRY} ${short_sha}"    
                     }
