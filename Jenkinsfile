@@ -7,20 +7,18 @@ pipeline {
     }
     stages {
         stage('Build') {
-            steps {
-                parallel  {
-                    stage('Build a') {
-                        steps {
-                            echo "a ${DOCKER_REGISTRY}"    
-                        }
-                    }
-                    stage('Build b') {
-                        steps {
-                            echo "b"
-                        }
+            parallel  {
+                stage('Build a') {
+                    steps {
+                        echo "a ${DOCKER_REGISTRY}"    
                     }
                 }
-            }
+                stage('Build b') {
+                    steps {
+                        echo "b"
+                    }
+                }
+        }
             } 
         stage('Test') {
             steps {
