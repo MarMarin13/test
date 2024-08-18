@@ -13,10 +13,10 @@ pipeline {
                         DOCKER_REGISTRY = 'eeeeeeeeeee'
                     }
                     steps {
-                        sh '''
-                        export short_sha=$(echo ${GIT_COMMIT} | cut -c1-7)
-                        '''
-                        echo "a ${DOCKER_REGISTRY} ${short_sha}"    
+                        script {
+                            def short_sha = GIT_COMMIT.substring(0,10)
+                            echo "a ${DOCKER_REGISTRY} ${short_sha}"    
+                        }
                     }
                 }
                 stage('Build b') {
