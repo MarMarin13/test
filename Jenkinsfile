@@ -9,13 +9,16 @@ pipeline {
         stage('Build') {
             parallel  {
                 stage('Build a') {
+                    environment {
+                        DOCKER_REGISTRY = 'eeeeeeeeeee'
+                    }
                     steps {
                         echo "a ${DOCKER_REGISTRY}"    
                     }
                 }
                 stage('Build b') {
                     steps {
-                        input("Do you want to run the parallel build b?")
+                        echo "a ${DOCKER_REGISTRY}"   
                         echo "b"
                     }
                 }
