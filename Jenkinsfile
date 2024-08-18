@@ -15,6 +15,7 @@ pipeline {
                 }
                 stage('Build b') {
                     steps {
+                        input("Do you want to run the parallel build b?")
                         echo "b"
                     }
                 }
