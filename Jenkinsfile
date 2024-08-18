@@ -15,9 +15,9 @@ pipeline {
                     steps {
                         script {
                             def short_sha = GIT_COMMIT.substring(0,10)
-                            echo "a ${DOCKER_REGISTRY} ${short_sha}"    
+                            def docker_image = "${GIT_BRANCH}:${short_sha}"    
+                            docker.build(docker_image)
                         }
-                        echo "$short_sha"
                     }
                 }
                 stage('Build b') {
