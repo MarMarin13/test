@@ -8,9 +8,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                script {
-                    docker.build("${DOCKER_IMAGE}:test")
-                }
+                echo ${DOCKER_REGISTRY}
             }
             } 
         stage('Test') {
@@ -23,6 +21,7 @@ pipeline {
                 echo "Deploying"
                 sh '''
                     cat test.py
+                    echo "Test"
                 '''
             }
         }
