@@ -8,7 +8,14 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo "${DOCKER_REGISTRY}"
+                parallel  {
+                    a: {
+                        echo "a ${DOCKER_REGISTRY}"    
+                    },
+                    b: {
+                        echo "b"
+                    }
+                }
             }
             } 
         stage('Test') {
@@ -22,6 +29,7 @@ pipeline {
                 sh '''
                     cat test.py
                     echo "Test"
+                    ls
                 '''
             }
         }
