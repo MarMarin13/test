@@ -12,6 +12,9 @@ pipeline {
                     environment {
                         DOCKER_REGISTRY = 'eeeeeeeeeee'
                     }
+                    when {
+                        branch 'main'
+                    }
                     steps {
                         script {
                             def short_sha = GIT_COMMIT.substring(0,10)
@@ -21,6 +24,9 @@ pipeline {
                     }
                 }
                 stage('Build b') {
+                    when {
+                        branch 'dev'
+                    }
                     steps {
                         echo "a ${DOCKER_REGISTRY}"   
                         echo "b"
