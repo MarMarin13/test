@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo ${DOCKER_REGISTRY}
+                echo "${DOCKER_REGISTRY}"
             }
             } 
         stage('Test') {
