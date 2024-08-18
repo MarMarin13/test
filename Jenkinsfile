@@ -13,7 +13,10 @@ pipeline {
                         DOCKER_REGISTRY = 'eeeeeeeeeee'
                     }
                     steps {
-                        echo "a ${DOCKER_REGISTRY} ${GIT_COMMIT}"    
+                        sh '''
+                        short_sha=$(echo ${GIT_COMMIT} | cut -c1-7)
+                        '''
+                        echo "a ${DOCKER_REGISTRY} ${short_sha}"    
                     }
                 }
                 stage('Build b') {
